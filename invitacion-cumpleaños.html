@@ -1,0 +1,1436 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Cumpleaños Mi Amor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* FONDO FLORAL Y COLORES */
+      body {
+        background-color: #fdf8f4;
+        background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235c1126' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        color: #1a1a1a;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      .title-font {
+        font-family: "Playfair Display", serif;
+      }
+      .handwriting {
+        font-family: "Caveat", cursive;
+      }
+      :root {
+        --vinotinto: #5c1126;
+        --vinotinto-claro: #8a1a3a;
+        --cuerda: #e0d0c1;
+      }
+      .vinotinto-text {
+        color: var(--vinotinto);
+      }
+      .vinotinto-bg {
+        background-color: var(--vinotinto);
+      }
+
+      /* EFECTOS DE SCROLL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        transform: translateX(-60px);
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal-right {
+        transform: translateX(60px);
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal-left.active,
+      .reveal-right.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      /* MACRAMÉ CONTAINERS */
+      .contenedor-macrame {
+        background: rgba(255, 255, 255, 0.95);
+        border: 12px solid var(--cuerda);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0px 15px 35px rgba(92, 17, 38, 0.1);
+        position: relative;
+        margin: 15px;
+      }
+
+      .btn-vinotinto {
+        background-color: var(--vinotinto);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(92, 17, 38, 0.3);
+      }
+      .btn-vinotinto:hover {
+        background-color: var(--vinotinto-claro);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(92, 17, 38, 0.4);
+      }
+
+      /* BARRA DE PROGRESO */
+      .barra-contenedor {
+        width: 100%;
+        background-color: #eee;
+        border-radius: 20px;
+        height: 35px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 25px;
+        border: 2px solid var(--cuerda);
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .barra-fill {
+        height: 100%;
+        width: 0%;
+        background-color: var(--vinotinto);
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .barra-texto {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        line-height: 31px;
+        font-weight: bold;
+        mix-blend-mode: difference;
+        color: white;
+        z-index: 10;
+      }
+      ul#mi-lista input[type="checkbox"] {
+        margin-right: 15px;
+        width: 22px;
+        height: 22px;
+        accent-color: var(--vinotinto);
+        cursor: pointer;
+      }
+
+      /* MAPA DEL TESORO PRO */
+      .mapa-3d-container {
+        background-color: #d4b383;
+        background-image:
+          linear-gradient(rgba(100, 50, 20, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(100, 50, 20, 0.08) 1px, transparent 1px),
+          radial-gradient(
+            circle at 30% 20%,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(100, 50, 20, 0.2) 0%,
+            transparent 50%
+          ),
+          url("https://www.transparenttextures.com/patterns/parchment.png");
+        background-size:
+          60px 60px,
+          60px 60px,
+          100% 100%,
+          100% 100%,
+          auto;
+        box-shadow:
+          inset 0 0 120px rgba(50, 20, 0, 0.95),
+          inset 0 0 40px rgba(20, 5, 0, 0.9),
+          0 25px 50px rgba(0, 0, 0, 0.7);
+        border: 14px solid #2d180d;
+        border-radius: 8px;
+        position: relative;
+        min-height: 600px;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .mapa-3d-container {
+          min-height: 800px;
+        }
+      }
+
+      .mapa-topografia {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.85;
+      }
+
+      .ruta-mapa {
+        stroke-dasharray: 2, 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.5));
+        animation: fadeInPath 1.5s ease-in forwards;
+      }
+      @keyframes fadeInPath {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .marcador-tesoro {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        text-align: center;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .marcador-tesoro:hover {
+        transform: translate(-50%, -50%) scale(1.15);
+        z-index: 50;
+      }
+
+      .cruz-roja {
+        color: #8b0000;
+        font-family: "Caveat", cursive;
+        font-weight: bold;
+        font-size: 4rem;
+        line-height: 1;
+        text-shadow:
+          2px 3px 4px rgba(0, 0, 0, 0.6),
+          inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+        transform: rotate(-12deg);
+      }
+
+      .polaroid-mini {
+        background: #fff;
+        padding: 4px 4px 12px 4px;
+        box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.6);
+        border-radius: 2px;
+        width: 60px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+      }
+      .marcador-tesoro:hover .polaroid-mini {
+        width: 150px;
+        transform: rotate(0deg) !important;
+        box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.8);
+      }
+      .polaroid-mini img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
+
+      .etiqueta-mapa {
+        background: #f4e3c5;
+        border: 2px solid #3a2212;
+        color: #2b1708;
+        padding: 4px 14px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        font-family: "Poppins", sans-serif;
+        box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.6);
+        margin-top: -8px;
+        letter-spacing: 0.5px;
+      }
+      .marcador-tesoro:hover .etiqueta-mapa.con-foto {
+        display: none;
+      }
+
+      .hidden-section {
+        display: none !important;
+      }
+      .riddle-input {
+        border: none;
+        border-bottom: 2px solid var(--vinotinto);
+        background: transparent;
+        text-align: center;
+        font-size: 1.1rem;
+        padding: 8px;
+        outline: none;
+        width: 100%;
+        color: #000;
+        font-weight: 500;
+      }
+      .star-rating i {
+        cursor: pointer;
+        color: #d1d5db;
+        transition:
+          transform 0.2s,
+          color 0.2s;
+      }
+      .star-rating i:hover {
+        transform: scale(1.2);
+      }
+      .star-rating i.active {
+        color: #fbbf24;
+        text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+      }
+      #emoji-reaccion {
+        font-size: 4.5rem;
+        display: block;
+        margin-top: 15px;
+        animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BARRA FLOTANTE MODO DEMO PORTAFOLIO -->
+    <div
+      id="demo-banner"
+      class="fixed top-4 right-4 z-50 flex items-center gap-2 bg-slate-900/90 text-white px-4 py-2 rounded-full shadow-xl border border-white/20 backdrop-blur-md text-xs md:text-sm"
+    >
+      <span class="hidden sm:inline text-gray-300">Vista Portafolio:</span>
+      <button
+        onclick="activarModoDemo()"
+        class="bg-[#8A1A3A] hover:bg-[#5C1126] text-white font-bold px-3 py-1.5 rounded-full transition cursor-pointer"
+      >
+        🔓 Desbloquear todo
+      </button>
+    </div>
+    <!-- INICIO -->
+    <header
+      class="min-h-screen flex flex-col items-center justify-center text-center p-4 relative"
+    >
+      <div class="reveal">
+        <i
+          class="fas fa-heart text-6xl md:text-8xl vinotinto-text mb-6 animate-pulse"
+          style="filter: drop-shadow(0 0 15px rgba(92, 17, 38, 0.4))"
+        ></i>
+        <!-- Título centrado -->
+        <h1
+          class="text-5xl md:text-8xl font-bold mb-4 text-black drop-shadow-md text-center leading-tight"
+        >
+          Feliz Cumpleaños<br />Amor
+        </h1>
+        <p
+          class="text-2xl md:text-4xl text-gray-800 max-w-2xl handwriting mb-10 font-bold"
+        >
+          Tengo preparadas algunas sorpresas para ti...
+        </p>
+        <button
+          onclick="document.getElementById('dinner-section').scrollIntoView()"
+          class="btn-vinotinto text-xl px-10 py-4"
+        >
+          Comenzar Aventura
+        </button>
+      </div>
+    </header>
+
+    <!-- CENA Y ACERTIJOS -->
+    <section
+      id="dinner-section"
+      class="min-h-screen flex flex-col items-center justify-center p-4"
+    >
+      <div
+        id="pre-game-container"
+        class="max-w-2xl w-full text-center contenedor-macrame reveal"
+      >
+        <h2 class="text-4xl font-bold mb-6 vinotinto-text title-font">
+          El Primer Acertijo
+        </h2>
+        <div class="space-y-6">
+          <!-- ACERTIJO 1 -->
+          <div id="riddle-1">
+            <p class="font-bold text-xl mb-2 text-gray-800">
+              "Nuestro lugar de comida en nuestras primeras citas, ¿cómo se
+              llama?"
+            </p>
+            <input
+              type="text"
+              id="answer-1"
+              class="riddle-input max-w-xs"
+              placeholder="Tu respuesta..."
+              onkeypress="validarAcertijo(1, event)"
+            />
+            <p id="feedback-1" class="mt-2 hidden-section text-sm"></p>
+          </div>
+
+          <!-- ACERTIJO 2 -->
+          <div class="hidden-section reveal" id="riddle-2">
+            <p class="font-bold text-xl mb-2 mt-6 text-gray-800">
+              "¿Cuál fue la primera película que vimos juntas?"
+            </p>
+            <input
+              type="text"
+              id="answer-2"
+              class="riddle-input max-w-xs"
+              placeholder="Tu respuesta..."
+              onkeypress="validarAcertijo(2, event)"
+            />
+            <p id="feedback-2" class="mt-2 hidden-section text-sm"></p>
+          </div>
+
+          <!-- ACERTIJO 3 -->
+          <div class="hidden-section reveal" id="riddle-3">
+            <p class="font-bold text-xl mb-2 mt-6 text-gray-800">
+              "Fecha en la que nos mudamos juntas - día, mes y año (ej: x de x
+              2026)"
+            </p>
+            <input
+              type="text"
+              id="answer-3"
+              class="riddle-input max-w-xs"
+              placeholder="Tu respuesta..."
+              onkeypress="validarAcertijo(3, event)"
+            />
+            <p id="feedback-3" class="mt-2 hidden-section text-sm"></p>
+          </div>
+
+          <button onclick="validarActual()" class="mt-8 btn-vinotinto text-lg">
+            Verificar Respuesta
+          </button>
+        </div>
+      </div>
+
+      <!-- INVITACIÓN CENA -->
+      <div
+        id="dinner-invitation"
+        class="max-w-4xl w-full hidden-section text-center mt-12 contenedor-macrame reveal"
+      >
+        <h2 class="text-5xl font-bold mb-2 vinotinto-text title-font">
+          ¡Acertaste!
+        </h2>
+        <h3 class="text-3xl mb-10 handwriting font-bold text-gray-800">
+          Tu cena de cumpleaños te espera
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+          <div class="space-y-4 text-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <div
+                class="flex items-center space-x-4 bg-rose-50 p-3 rounded-xl border border-rose-100"
+              >
+                <i class="far fa-calendar-alt text-2xl vinotinto-text"></i>
+                <p><b>Fecha:</b><br />Martes 27 de Octubre</p>
+              </div>
+              <div
+                class="flex items-center space-x-4 bg-rose-50 p-3 rounded-xl border border-rose-100"
+              >
+                <i class="far fa-clock text-2xl vinotinto-text"></i>
+                <p><b>Hora:</b><br />7:00 PM</p>
+              </div>
+              <div
+                class="flex items-center space-x-4 bg-rose-50 p-3 rounded-xl border border-rose-100"
+              >
+                <i class="fas fa-map-marker-alt text-2xl vinotinto-text"></i>
+                <p><b>Lugar:</b><br />Restaurante Italiano Quattro 50</p>
+              </div>
+            </div>
+
+            <!-- BOTÓN DE CALENDARIO SOLO PARA CENA -->
+            <div class="mt-4">
+              <a
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cena+de+Cumplea%C3%B1os+con+mi+Amor&dates=20261027T190000/20261027T220000&details=Nuestra+cena+especial+de+cumplea%C3%B1os.&location=https://maps.app.goo.gl/u85PwZvaCPDyhzBD6"
+                target="_blank"
+                class="w-full border-2 border-[#5C1126] text-[#5C1126] px-4 py-3 rounded-xl hover:bg-rose-50 transition flex items-center justify-center font-bold text-sm md:text-base"
+              >
+                <i class="fas fa-calendar-plus mr-2"></i> Agendar Cena
+              </a>
+            </div>
+          </div>
+
+          <!-- MAPA VISIBLE E INTEGRADO DIRECTAMENTE -->
+          <div
+            class="h-full min-h-[250px] rounded-xl overflow-hidden border-4 border-dashed border-[#5C1126] shadow-inner relative group"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.5432903411306!2d-74.0574262258936!3d4.675190541879996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b65f5774935%3A0x8a11d7ea8525a836!2sQuattro%2050%20Pizza%20%26%20Bar!5e0!3m2!1ses!2sco!4v1792123051730!5m2!1ses!2sco"
+              width="100%"
+              height="100%"
+              style="border: 0; min-height: 250px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+            <a
+              href="https://maps.app.goo.gl/u85PwZvaCPDyhzBD6"
+              target="_blank"
+              class="absolute bottom-2 left-2 right-2 bg-[#5C1126] text-white px-3 py-2 rounded-lg text-sm font-bold shadow-lg hover:bg-[#8A1A3A] transition text-center opacity-90 hover:opacity-100"
+            >
+              Abrir en Google Maps <i class="fas fa-external-link-alt ml-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- TEASER / CUENTA REGRESIVA PARA EL VIAJE -->
+        <div id="contenedor-teaser" class="mt-12 reveal">
+          <div
+            id="mensaje-cuenta-regresiva"
+            class="text-lg md:text-xl font-bold text-[#8A1A3A] bg-rose-50 p-4 rounded-xl border-2 border-dashed border-[#8A1A3A] inline-block shadow-sm"
+          >
+            ¡Prepárate! Faltan
+            <span id="contador-tiempo" class="text-[#5C1126]">...</span> para tu
+            siguiente sorpresa 🤫
+          </div>
+          <button
+            id="btn-revelar-viaje"
+            onclick="
+              document.getElementById('contenedor-viaje').scrollIntoView()
+            "
+            class="btn-vinotinto animate-bounce flex items-center mx-auto hidden-section"
+          >
+            <i class="fas fa-arrow-down mr-2"></i> ¡Descubre tu gran sorpresa!
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE DEL VIAJE Y PREPARATIVOS -->
+    <div id="contenedor-viaje">
+      <!-- CHECKLIST (Con caché local y botón de borrar) -->
+      <section id="checklist-section" class="py-20 px-4 bg-white/40">
+        <div class="max-w-4xl mx-auto text-center contenedor-macrame reveal">
+          <h2 class="text-5xl font-bold mb-4 vinotinto-text title-font">
+            Antes de partir...
+          </h2>
+          <p
+            class="text-xl md:text-2xl text-gray-800 handwriting mb-8 font-bold"
+          >
+            Tu checklist de supervivencia para nuestra aventura
+          </p>
+          <div class="barra-contenedor">
+            <div id="barra-progreso" class="barra-fill"></div>
+            <div id="texto-porcentaje" class="barra-texto">0% Completo</div>
+          </div>
+          <ul
+            id="mi-lista"
+            class="text-left mb-8 text-lg text-gray-800 w-full"
+          ></ul>
+          <div class="flex flex-col md:flex-row gap-3">
+            <input
+              type="text"
+              id="nuevo-item"
+              class="flex-1 p-3 border-2 rounded-xl outline-none border-gray-300 focus:border-[#5C1126] font-medium"
+              placeholder="Agregar un nuevo ítem..."
+              onkeypress="if (event.key === 'Enter') agregarItem();"
+            />
+            <button
+              class="btn-vinotinto flex items-center justify-center"
+              onclick="agregarItem()"
+            >
+              <i class="fas fa-plus mr-2"></i>Agregar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL MAPA SÚPER PRO (CORAZÓN + FOTOS) -->
+      <section
+        id="trip-section"
+        class="py-20 px-4 bg-[#140b07] text-amber-50 shadow-[inset_0_0_100px_rgba(0,0,0,0.9)]"
+      >
+        <div class="max-w-7xl mx-auto text-center mb-12 reveal">
+          <h2
+            class="text-6xl md:text-7xl font-bold mb-4 title-font text-[#e0b982]"
+            style="text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8)"
+          >
+            El Gran Viaje
+          </h2>
+          <p
+            class="text-xl md:text-2xl text-gray-300 handwriting max-w-3xl mx-auto mb-6"
+          >
+            Adivina el lugar, llega a la hora correcta, y guarda una foto de
+            cada momento para llenar nuestro mapa de recuerdos.
+          </p>
+
+          <a
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=El+Gran+Viaje+de+Cumplea%C3%B1os&dates=20261031T060000/20261101T200000&details=Nuestra+aventura+juntos."
+            target="_blank"
+            class="inline-flex items-center justify-center border-2 border-[#e0b982] bg-transparent text-[#e0b982] px-6 py-3 rounded-xl hover:bg-[#e0b982] hover:text-[#140b07] transition font-bold text-lg shadow-lg"
+          >
+            <i class="fas fa-calendar-check mr-2"></i> Agendar Viaje en
+            Calendario
+          </a>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 mt-8">
+          <div
+            class="w-full md:w-1/3 space-y-4 max-h-[700px] overflow-y-auto pr-2 reveal-left"
+            id="map-stops-container"
+          ></div>
+
+          <div
+            class="w-full md:w-2/3 mapa-3d-container reveal-right"
+            id="map-visuals"
+          >
+            <div
+              id="capa-topografia"
+              class="absolute inset-0 w-full h-full pointer-events-none"
+            ></div>
+            <svg
+              class="absolute inset-0 w-full h-full z-10 pointer-events-none"
+              id="mapa-lineas"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            ></svg>
+
+            <svg
+              class="absolute bottom-6 right-6 w-40 h-40 opacity-90 pointer-events-none z-20"
+              viewBox="0 0 100 100"
+              style="filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.7))"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="46"
+                stroke="#3a2212"
+                stroke-width="1.5"
+                fill="#f4e3c5"
+                fill-opacity="0.3"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#3a2212"
+                stroke-width="2.5"
+                fill="none"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="34"
+                stroke="#3a2212"
+                stroke-width="1"
+                fill="none"
+                stroke-dasharray="2 3"
+              />
+              <path
+                d="M50 2 L58 42 L98 50 L58 58 L50 98 L42 58 L2 50 L42 42 Z"
+                fill="#d4b383"
+                stroke="#3a2212"
+                stroke-width="1.5"
+              />
+              <path
+                d="M50 2 L58 42 L50 50 Z M98 50 L58 58 L50 50 Z M50 98 L42 58 L50 50 Z M2 50 L42 42 L50 50 Z"
+                fill="#3a2212"
+              />
+              <path
+                d="M50 15 L65 35 L85 50 L65 65 L50 85 L35 65 L15 50 L35 35 Z"
+                fill="none"
+                stroke="#3a2212"
+                stroke-width="1"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="6"
+                fill="#f4e3c5"
+                stroke="#3a2212"
+                stroke-width="2"
+              />
+              <text
+                x="46"
+                y="14"
+                fill="#2d180d"
+                font-family="serif"
+                font-weight="bold"
+                font-size="14"
+                style="text-shadow: 1px 1px 0px #fff"
+              >
+                N
+              </text>
+              <text
+                x="46"
+                y="96"
+                fill="#2d180d"
+                font-family="serif"
+                font-weight="bold"
+                font-size="14"
+                style="text-shadow: 1px 1px 0px #fff"
+              >
+                S
+              </text>
+              <text
+                x="88"
+                y="55"
+                fill="#2d180d"
+                font-family="serif"
+                font-weight="bold"
+                font-size="14"
+                style="text-shadow: 1px 1px 0px #fff"
+              >
+                E
+              </text>
+              <text
+                x="4"
+                y="55"
+                fill="#2d180d"
+                font-family="serif"
+                font-weight="bold"
+                font-size="14"
+                style="text-shadow: 1px 1px 0px #fff"
+              >
+                O
+              </text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECUERDOS FINALES -->
+      <section
+        id="memory-section"
+        class="py-24 px-4 md:px-6 bg-white border-t-2 border-gray-200 shadow-inner"
+      >
+        <div class="max-w-3xl mx-auto text-center reveal">
+          <h2
+            class="text-5xl md:text-6xl font-bold mb-2 vinotinto-text title-font"
+          >
+            Prueba de Nuestro Amor
+          </h2>
+          <h3 class="text-4xl text-gray-800 handwriting mb-6 font-bold">
+            Alice y Caro
+          </h3>
+          <p class="text-gray-600 font-medium mb-10 text-xl">
+            Sube la foto oficial de nuestra aventura para sellar este recuerdo
+            por siempre.
+          </p>
+
+          <div class="contenedor-macrame text-left reveal">
+            <div class="mb-8">
+              <label
+                class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-widest"
+                >Foto oficial del viaje</label
+              >
+              <div
+                class="border-4 border-dashed border-[#e0d0c1] bg-gray-50 rounded-3xl p-12 text-center hover:bg-rose-50 transition-colors cursor-pointer"
+                onclick="document.getElementById('photo-upload').click()"
+              >
+                <i class="fas fa-camera text-6xl text-gray-400 mb-4"></i>
+                <p class="text-gray-700 font-bold text-xl">
+                  Haz clic para subir una foto
+                </p>
+                <input
+                  type="file"
+                  id="photo-upload"
+                  class="hidden"
+                  accept="image/*"
+                  onchange="previewImage(event)"
+                />
+              </div>
+              <img
+                id="photo-preview"
+                class="mt-6 rounded-3xl max-h-96 w-full object-cover hidden-section shadow-2xl border-8 border-white"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+              <div>
+                <label
+                  class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-widest"
+                  >Fecha del Recuerdo</label
+                >
+                <input
+                  type="date"
+                  class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl outline-none focus:border-[#5C1126] font-medium text-gray-800"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-widest"
+                  >Lugar</label
+                >
+                <input
+                  type="text"
+                  placeholder="Ej. Nuestro destino favorito"
+                  class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl outline-none focus:border-[#5C1126] font-medium text-gray-800"
+                />
+              </div>
+            </div>
+
+            <div
+              class="mb-12 text-center bg-gray-50 p-8 rounded-3xl border-2 border-gray-100 shadow-inner"
+            >
+              <label
+                class="block text-sm font-bold text-gray-700 mb-6 uppercase tracking-widest"
+                >Nuestro Nivel de Felicidad</label
+              >
+              <div
+                class="star-rating text-6xl space-x-3"
+                id="star-rating-container"
+              >
+                <i class="fas fa-star" data-rating="1"></i>
+                <i class="fas fa-star" data-rating="2"></i>
+                <i class="fas fa-star" data-rating="3"></i>
+                <i class="fas fa-star" data-rating="4"></i>
+                <i class="fas fa-star" data-rating="5"></i>
+              </div>
+              <span id="emoji-reaccion"></span>
+            </div>
+
+            <button
+              onclick="saveMemory()"
+              class="w-full btn-vinotinto py-5 text-2xl rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-heart mr-3"></i> Guardar Recuerdo
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // ==========================================
+      // ANIMACIONES DE SCROLL
+      // ==========================================
+      function initScrollReveals() {
+        const reveals = document.querySelectorAll(
+          ".reveal, .reveal-left, .reveal-right",
+        );
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+              } else {
+                entry.target.classList.remove("active");
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        reveals.forEach((el) => observer.observe(el));
+      }
+      document.addEventListener("DOMContentLoaded", initScrollReveals);
+
+      // ==========================================
+      // 🚨 PANEL DE CONTROL: HORARIOS Y FECHAS 🚨
+      // ==========================================
+      const MODO_PRUEBA = true; // <-- CÁMBIALO A FALSE PARA QUE SE BLOQUEE CON EL RELOJ
+      const FECHA_DESBLOQUEO_VIAJE = new Date("2026-10-30T21:00:00").getTime();
+
+      // ==========================================
+      // LÓGICA CENA (PASO A PASO)
+      // ==========================================
+      const resp1 = "chef burger";
+      const resp2 = "limitless";
+      const resp3 = "5 de febrero 2026";
+
+      let pasoActual = 1;
+
+      function limpiarTexto(texto) {
+        return texto
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .trim();
+      }
+
+      function actualizarCuentaRegresiva() {
+        const ahora = new Date().getTime();
+        const distancia = FECHA_DESBLOQUEO_VIAJE - ahora;
+
+        const contenedorViaje = document.getElementById("contenedor-viaje");
+        const btnRevelar = document.getElementById("btn-revelar-viaje");
+        const mensajeCuenta = document.getElementById(
+          "mensaje-cuenta-regresiva",
+        );
+        const contadorTexto = document.getElementById("contador-tiempo");
+
+        if (MODO_PRUEBA || distancia <= 0) {
+          contenedorViaje.style.display = "block";
+          btnRevelar.classList.remove("hidden-section");
+          if (mensajeCuenta) mensajeCuenta.classList.add("hidden-section");
+        } else {
+          contenedorViaje.style.display = "none";
+          btnRevelar.classList.add("hidden-section");
+          if (mensajeCuenta) mensajeCuenta.classList.remove("hidden-section");
+
+          const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+          const horas = Math.floor(
+            (distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutos = Math.floor(
+            (distancia % (1000 * 60 * 60)) / (1000 * 60),
+          );
+          const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+          let textoReloj = "";
+          if (dias > 0) textoReloj += `${dias} días, `;
+          textoReloj += `${horas}h ${minutos}m ${segundos}s`;
+
+          if (contadorTexto) contadorTexto.innerText = textoReloj;
+        }
+      }
+      actualizarCuentaRegresiva();
+      setInterval(actualizarCuentaRegresiva, 1000);
+
+      function validarAcertijo(paso, event) {
+        if (event && event.key !== "Enter") return;
+        const input = document.getElementById(`answer-${paso}`);
+        const feedback = document.getElementById(`feedback-${paso}`);
+        const valor = limpiarTexto(input.value);
+
+        let esCorrecto = false;
+        if (paso === 1 && valor.includes(resp1)) esCorrecto = true;
+        if (paso === 2 && valor.includes(resp2)) esCorrecto = true;
+        if (paso === 3 && valor.includes(resp3)) esCorrecto = true;
+
+        if (esCorrecto) {
+          feedback.innerHTML =
+            '<span class="text-green-600 font-bold text-base"><i class="fas fa-check-circle mr-1"></i> ¡Correcto mi amor! 💖</span>';
+          feedback.classList.remove("hidden-section");
+
+          setTimeout(() => {
+            feedback.classList.add("hidden-section");
+            if (paso === 1) {
+              document
+                .getElementById("riddle-2")
+                .classList.remove("hidden-section");
+              setTimeout(
+                () =>
+                  document.getElementById("riddle-2").classList.add("active"),
+                50,
+              );
+              document.getElementById("answer-2").focus();
+              pasoActual = 2;
+            } else if (paso === 2) {
+              document
+                .getElementById("riddle-3")
+                .classList.remove("hidden-section");
+              setTimeout(
+                () =>
+                  document.getElementById("riddle-3").classList.add("active"),
+                50,
+              );
+              document.getElementById("answer-3").focus();
+              pasoActual = 3;
+            } else if (paso === 3) {
+              document
+                .getElementById("pre-game-container")
+                .classList.add("hidden-section");
+              const inv = document.getElementById("dinner-invitation");
+              inv.classList.remove("hidden-section");
+              setTimeout(() => inv.classList.add("active"), 50);
+            }
+          }, 1200);
+        } else {
+          feedback.innerHTML =
+            '<span class="text-red-500 font-bold text-base"><i class="fas fa-times-circle mr-1"></i> Ups, esa no es. ¡Intenta de nuevo! 🤔</span>';
+          feedback.classList.remove("hidden-section");
+          setTimeout(() => {
+            feedback.classList.add("hidden-section");
+          }, 3000);
+        }
+      }
+
+      function validarActual() {
+        validarAcertijo(pasoActual, null);
+      }
+
+      // ==========================================
+      // MAPA TOPOGRÁFICO
+      // ==========================================
+      const mapStops = [
+        {
+          id: 1,
+          name: "Salida Bogotá",
+          riddle: "¿De qué ciudad nos escapamos?",
+          answer: "bogota",
+          coords: { x: 50, y: 30 },
+          unlockTime: "2026-10-31T06:00:00",
+          photo: null,
+        },
+        {
+          id: 2,
+          name: "Termales",
+          riddle: "Agua caliente que relaja el cuerpo...",
+          answer: "termales",
+          coords: { x: 65, y: 15 },
+          unlockTime: "2026-10-31T10:00:00",
+          photo: null,
+        },
+        {
+          id: 3,
+          name: "Almuerzo",
+          riddle: "Recarga de energía para la tarde...",
+          answer: "almuerzo",
+          coords: { x: 85, y: 25 },
+          unlockTime: "2026-10-31T13:30:00",
+          photo: null,
+        },
+        {
+          id: 4,
+          name: "Airbnb",
+          riddle: "Nuestro hogar temporal...",
+          answer: "airbnb",
+          coords: { x: 85, y: 45 },
+          unlockTime: "2026-10-31T16:00:00",
+          photo: null,
+        },
+        {
+          id: 5,
+          name: "Caminata",
+          riddle: "Un paseo a pie rodeados de naturaleza...",
+          answer: "caminata",
+          coords: { x: 70, y: 65 },
+          unlockTime: "2026-10-31T17:00:00",
+          photo: null,
+        },
+        {
+          id: 6,
+          name: "Fogata",
+          riddle: "Fuego controlado para calentarnos...",
+          answer: "fogata",
+          coords: { x: 50, y: 85 },
+          unlockTime: "2026-10-31T19:30:00",
+          photo: null,
+        },
+        {
+          id: 7,
+          name: "Jacuzzi",
+          riddle: "Bañera con burbujas relajantes...",
+          answer: "jacuzzi",
+          coords: { x: 30, y: 65 },
+          unlockTime: "2026-10-31T21:00:00",
+          photo: null,
+        },
+        {
+          id: 8,
+          name: "Love Time",
+          riddle: "Darnos y sentir mucho amor...",
+          answer: "amor",
+          coords: { x: 15, y: 45 },
+          unlockTime: "2026-10-31T22:30:00",
+          photo: null,
+        },
+        {
+          id: 9,
+          name: "Dormir",
+          riddle: "Lo que nos gusta hacer al descansar...",
+          answer: "arrunchis",
+          coords: { x: 15, y: 25 },
+          unlockTime: "2026-10-31T23:30:00",
+          photo: null,
+        },
+        {
+          id: 10,
+          name: "Desayuno",
+          riddle: "La primera comida del día...",
+          answer: "desayuno",
+          coords: { x: 35, y: 15 },
+          unlockTime: "2026-11-01T09:00:00",
+          photo: null,
+        },
+        {
+          id: 11,
+          name: "Cascada",
+          riddle: "Agua que cae de la montaña...",
+          answer: "cascada",
+          coords: { x: 45, y: 25 },
+          unlockTime: "2026-11-01T11:00:00",
+          photo: null,
+        },
+        {
+          id: 12,
+          name: "Regreso",
+          riddle: "Vuelta a la realidad...",
+          answer: "regreso",
+          coords: { x: 50.5, y: 30.5 },
+          unlockTime: "2026-11-01T15:00:00",
+          photo: null,
+        },
+      ];
+
+      let currentStop = 1;
+
+      function handleStopPhoto(event, id) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const stop = mapStops.find((s) => s.id === id);
+            stop.photo = e.target.result;
+            renderMap();
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function dibujarPaisaje() {
+        const capa = document.getElementById("capa-topografia");
+        const svgMontana = `
+          <svg viewBox="0 0 100 60" style="width:100%; height:100%; overflow:visible;">
+            <defs><filter id="shadow"><feDropShadow dx="3" dy="5" stdDeviation="3" flood-opacity="0.4" flood-color="#1a0b05"/></filter></defs>
+            <g filter="url(#shadow)" stroke="#3a2212" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M10 50 L35 15 L55 40 L75 20 L95 50 Z" fill="#d4b383" />
+              <path d="M35 15 L45 35 L35 50 M75 20 L80 35 L70 50" fill="rgba(58, 34, 18, 0.2)" stroke-width="1"/>
+              <path d="M10 50 L35 15 L55 40 L75 20 L95 50" fill="none" stroke-width="2.5"/>
+              <path d="M25 30 L30 40 M45 30 L50 40 M65 30 L70 40 M85 35 L90 45" stroke-width="1" opacity="0.5"/>
+            </g>
+          </svg>`;
+        const posMontanas = [
+          { t: 45, l: 40, s: 120 },
+          { t: 10, l: 15, s: 90 },
+          { t: 75, l: 15, s: 100 },
+          { t: 5, l: 80, s: 110 },
+        ];
+        posMontanas.forEach((pos) => {
+          const m = document.createElement("div");
+          m.className = "mapa-topografia";
+          m.style.top = pos.t + "%";
+          m.style.left = pos.l + "%";
+          m.style.width = pos.s + "px";
+          m.innerHTML = svgMontana;
+          capa.appendChild(m);
+        });
+
+        const svgArbol = `
+          <svg viewBox="0 0 100 100" style="width:100%; height:100%; overflow:visible;">
+            <g stroke="#3a2212" stroke-width="4" stroke-linejoin="round" fill="rgba(58, 34, 18, 0.15)">
+              <path d="M50 10 L80 60 L65 60 L90 100 L10 100 L35 60 L20 60 Z" />
+            </g>
+          </svg>`;
+        const posArboles = [
+          { t: 55, l: 45, s: 20 },
+          { t: 52, l: 55, s: 25 },
+          { t: 48, l: 35, s: 18 },
+          { t: 82, l: 20, s: 22 },
+          { t: 85, l: 28, s: 18 },
+          { t: 15, l: 85, s: 20 },
+          { t: 12, l: 78, s: 15 },
+          { t: 70, l: 85, s: 20 },
+        ];
+        posArboles.forEach((pos) => {
+          const a = document.createElement("div");
+          a.className = "mapa-topografia";
+          a.style.top = pos.t + "%";
+          a.style.left = pos.l + "%";
+          a.style.width = pos.s + "px";
+          a.innerHTML = svgArbol;
+          capa.appendChild(a);
+        });
+      }
+      dibujarPaisaje();
+
+      function renderMap() {
+        const container = document.getElementById("map-stops-container");
+        const visuals = document.getElementById("map-visuals");
+        const svgLines = document.getElementById("mapa-lineas");
+
+        container.innerHTML = "";
+        svgLines.innerHTML = "";
+        document
+          .querySelectorAll(".marcador-tesoro")
+          .forEach((e) => e.remove());
+        let svgPathD = "";
+        const ahora = new Date().getTime();
+
+        mapStops.forEach((stop, index) => {
+          const isUnlocked = stop.id <= currentStop;
+          const isCurrent = stop.id === currentStop;
+          const horaDesbloqueo = new Date(stop.unlockTime).getTime();
+          const horaCumplida = MODO_PRUEBA ? true : ahora >= horaDesbloqueo;
+
+          const stopDiv = document.createElement("div");
+          stopDiv.className = `p-5 rounded-2xl border-2 transition-all duration-300 shadow-md ${isUnlocked && !isCurrent ? "bg-[#f4e3c5] border-[#b58b5e] text-[#5a3a22]" : isCurrent ? "bg-white border-[#9e1414] transform scale-[1.02] shadow-xl" : "bg-[#2b1b12] border-gray-700 opacity-60 text-gray-400"}`;
+
+          if (isUnlocked && !isCurrent) {
+            let contentPhoto = stop.photo
+              ? `
+                <div class="mt-3 relative group overflow-hidden rounded-xl border-2 border-[#b58b5e] shadow-inner">
+                  <img src="${stop.photo}" class="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110" />
+                </div>`
+              : `
+                <div class="mt-4">
+                  <input type="file" id="photo-stop-${stop.id}" class="hidden" accept="image/*" onchange="handleStopPhoto(event, ${stop.id})" />
+                  <button onclick="document.getElementById('photo-stop-${stop.id}').click()" class="w-full text-sm bg-[#5a3a22] text-white font-bold py-2 px-4 rounded-xl shadow hover:bg-[#3a2212] transition flex items-center justify-center">
+                    <i class="fas fa-camera mr-2"></i> Añadir recuerdo
+                  </button>
+                </div>`;
+            stopDiv.innerHTML = `<h4 class="font-bold text-lg flex items-center justify-between"><span><i class="fas fa-check-circle text-green-600 mr-2"></i>${stop.name}</span>${stop.photo ? '<i class="fas fa-image text-[#b58b5e]"></i>' : ""}</h4>${contentPhoto}`;
+          } else if (isCurrent) {
+            if (horaCumplida) {
+              stopDiv.innerHTML = `
+                <h4 class="font-bold text-[#9e1414] mb-3 text-xl"><i class="fas fa-map-marker-alt mr-2"></i>Siguiente Destino</h4>
+                <p class="text-base mb-4 text-gray-800 font-semibold">${stop.riddle}</p>
+                <div class="flex flex-col gap-3">
+                  <input type="text" id="map-input-${stop.id}" class="w-full border-b-2 border-[#9e1414] outline-none p-2 text-black bg-gray-50 rounded-t" placeholder="Tu respuesta..." onkeypress="if(event.key === 'Enter') checkMapRiddle(${stop.id})">
+                  <button onclick="checkMapRiddle(${stop.id})" class="bg-[#9e1414] text-white px-4 py-2 rounded-xl font-bold hover:bg-red-800 transition">Revelar en el mapa</button>
+                </div>`;
+            } else {
+              const horaTexto = new Date(stop.unlockTime).toLocaleTimeString(
+                [],
+                { hour: "2-digit", minute: "2-digit" },
+              );
+              stopDiv.innerHTML = `<h4 class="font-bold text-[#9e1414] text-lg"><i class="fas fa-clock mr-2"></i>Aún no es hora</h4><p class="text-sm text-gray-800 mt-2 font-medium">El camino se revelará a las ${horaTexto}</p>`;
+            }
+          } else {
+            stopDiv.innerHTML = `<h4 class="font-bold text-lg"><i class="fas fa-lock mr-2"></i>Destino Oculto</h4>`;
+          }
+          container.appendChild(stopDiv);
+
+          if (isUnlocked) {
+            if (index === 0) svgPathD += `M ${stop.coords.x} ${stop.coords.y} `;
+            else svgPathD += `L ${stop.coords.x} ${stop.coords.y} `;
+
+            const mark = document.createElement("div");
+            mark.className = "marcador-tesoro reveal active";
+            mark.style.left = `${stop.coords.x}%`;
+            mark.style.top = `${stop.coords.y}%`;
+
+            if (isCurrent) {
+              mark.innerHTML = `<div class="cruz-roja animate-pulse">X</div>`;
+            } else {
+              if (stop.photo) {
+                const rot = Math.random() * 20 - 10;
+                mark.innerHTML = `<div class="polaroid-mini" style="transform: rotate(${rot}deg);"><img src="${stop.photo}" /></div><div class="etiqueta-mapa con-foto hidden md:block">${stop.name}</div>`;
+              } else {
+                mark.innerHTML = `<div class="cruz-roja">X</div><div class="etiqueta-mapa">${stop.name}</div>`;
+              }
+            }
+            visuals.appendChild(mark);
+          }
+        });
+
+        if (svgPathD) {
+          const path = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path",
+          );
+          path.setAttribute("d", svgPathD);
+          path.setAttribute("fill", "none");
+          path.setAttribute("stroke", "#6e1c12");
+          path.setAttribute("stroke-width", "0.8");
+          path.setAttribute("class", "ruta-mapa");
+          svgLines.appendChild(path);
+        }
+      }
+
+      function checkMapRiddle(id) {
+        const inputElement = document.getElementById(`map-input-${id}`);
+        if (!inputElement) return;
+        const inputValor = limpiarTexto(inputElement.value);
+        const stop = mapStops.find((s) => s.id === id);
+
+        if (
+          inputValor.includes(limpiarTexto(stop.answer)) ||
+          inputValor === "bypass"
+        ) {
+          currentStop++;
+          renderMap();
+        } else {
+          alert("Esa no es la respuesta correcta, mi amor. Piénsalo bien.");
+        }
+      }
+
+      // ==========================================
+      // CHECKLIST (CON CACHÉ Y BOTÓN BORRAR)
+      // ==========================================
+      const listaDOM = document.getElementById("mi-lista");
+
+      const defaultItems = [
+        { text: "Traje de baño", checked: false, isDefault: true },
+        { text: "Candado", checked: false, isDefault: true },
+        { text: "Ropa cómoda", checked: false, isDefault: true },
+        { text: "Ropa de cambio", checked: false, isDefault: true },
+        { text: "Abrigo/Saco caliente", checked: false, isDefault: true },
+        { text: "Zapatos de caminata", checked: false, isDefault: true },
+        { text: "Pijama calientita", checked: false, isDefault: true },
+        { text: "Aseo", checked: false, isDefault: true },
+        { text: "Efectivo y tarjetas", checked: false, isDefault: true },
+        { text: "¡Muuuuucho amor 🥹😍!", checked: false, isDefault: true },
+      ];
+
+      let misItemsViaje = JSON.parse(localStorage.getItem("checklistViaje"));
+      if (!misItemsViaje) {
+        misItemsViaje = [...defaultItems];
+      }
+
+      function inicializarChecklist() {
+        listaDOM.innerHTML = "";
+        misItemsViaje.forEach((item, index) => {
+          let li = document.createElement("li");
+          li.className =
+            "flex justify-between items-center group w-full py-3 border-b border-dashed border-[#5C1126]";
+
+          let btnBorrar = item.isDefault
+            ? ""
+            : `<button onclick="borrarItem(${index})" class="text-red-400 hover:text-red-700 opacity-0 group-hover:opacity-100 transition-opacity p-1 ml-2"><i class="fas fa-trash"></i></button>`;
+
+          li.innerHTML = `
+            <div class="flex items-center flex-1">
+              <input type="checkbox" onchange="actualizarProgreso(${index})" ${item.checked ? "checked" : ""} class="mr-3 w-5 h-5 accent-[#5C1126] cursor-pointer"> 
+              <span class="font-bold flex-1 ${item.checked ? "line-through text-gray-400" : "text-gray-800"}">${item.text}</span>
+            </div>
+            ${btnBorrar}
+          `;
+          listaDOM.appendChild(li);
+        });
+        calcularBarraProgreso();
+      }
+
+      function actualizarProgreso(index) {
+        const checkboxes = document.querySelectorAll(
+          '#mi-lista input[type="checkbox"]',
+        );
+        misItemsViaje[index].checked = checkboxes[index].checked;
+        guardarCache();
+        inicializarChecklist();
+      }
+
+      function calcularBarraProgreso() {
+        let marcados = misItemsViaje.filter((i) => i.checked).length;
+        let total = misItemsViaje.length;
+        let porcentaje = total === 0 ? 0 : Math.round((marcados / total) * 100);
+
+        document.getElementById("barra-progreso").style.width =
+          porcentaje + "%";
+        document.getElementById("texto-porcentaje").innerText =
+          `${porcentaje}% Completo`;
+      }
+
+      function agregarItem() {
+        let inputDOM = document.getElementById("nuevo-item");
+        let textoNuevo = inputDOM.value.trim();
+        if (textoNuevo !== "") {
+          misItemsViaje.push({
+            text: textoNuevo,
+            checked: false,
+            isDefault: false,
+          });
+          guardarCache();
+          inputDOM.value = "";
+          inicializarChecklist();
+        }
+      }
+
+      function borrarItem(index) {
+        misItemsViaje.splice(index, 1);
+        guardarCache();
+        inicializarChecklist();
+      }
+
+      function guardarCache() {
+        localStorage.setItem("checklistViaje", JSON.stringify(misItemsViaje));
+      }
+
+      // ==========================================
+      // RECUERDOS FINALES
+      // ==========================================
+      function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const img = document.getElementById("photo-preview");
+          img.src = reader.result;
+          img.classList.remove("hidden-section");
+          img.classList.add("reveal", "active");
+        };
+        if (event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+      }
+
+      const stars = document.querySelectorAll(".star-rating i");
+      let currentRating = 0;
+      const emojis = { 1: "😢", 2: "😕", 3: "😊", 4: "😍", 5: "💖💏" };
+
+      stars.forEach((star) => {
+        star.addEventListener("click", (e) => {
+          currentRating = parseInt(e.target.getAttribute("data-rating"));
+          updateStars();
+        });
+      });
+
+      function updateStars() {
+        stars.forEach((star, index) => {
+          if (index < currentRating) star.classList.add("active");
+          else star.classList.remove("active");
+        });
+        const emojiContainer = document.getElementById("emoji-reaccion");
+        emojiContainer.innerText = emojis[currentRating] || "";
+        emojiContainer.style.animation = "none";
+        setTimeout(
+          () => (emojiContainer.style.animation = "bounceIn 0.5s"),
+          10,
+        );
+      }
+
+      function saveMemory() {
+        if (currentRating === 0) {
+          alert("¡Por favor, califica nuestro nivel de felicidad!");
+          return;
+        }
+        alert(
+          "¡El recuerdo de este hermoso viaje de Alice y Caro ha sido guardado en nuestros corazones! Te amo.",
+        );
+      }
+
+      // Iniciar todo
+      renderMap();
+      inicializarChecklist();
+      // ==========================================
+      // MODO DEMO PARA PORTAFOLIO
+      // ==========================================
+      function activarModoDemo() {
+        // 1. Ocultar acertijos iniciales y mostrar invitación a la cena
+        document
+          .getElementById("pre-game-container")
+          .classList.add("hidden-section");
+        const inv = document.getElementById("dinner-invitation");
+        inv.classList.remove("hidden-section");
+        inv.classList.add("active");
+
+        // 2. Mostrar el bloque del viaje (checklist, mapa y recuerdos)
+        const contenedorViaje = document.getElementById("contenedor-viaje");
+        if (contenedorViaje) contenedorViaje.style.display = "block";
+
+        const btnRevelar = document.getElementById("btn-revelar-viaje");
+        if (btnRevelar) btnRevelar.classList.remove("hidden-section");
+
+        const mensajeCuenta = document.getElementById(
+          "mensaje-cuenta-regresiva",
+        );
+        if (mensajeCuenta) mensajeCuenta.classList.add("hidden-section");
+
+        // 3. Desbloquear las 12 paradas del mapa para ver el corazón completo
+        currentStop = 13;
+        renderMap();
+
+        // 4. Actualizar el botón y llevar suavemente a la invitación
+        const banner = document.getElementById("demo-banner");
+        if (banner) {
+          banner.innerHTML =
+            '<span class="text-green-400 font-bold px-2">✓ Modo Demo activo (Todo desbloqueado)</span>';
+        }
+        inv.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
